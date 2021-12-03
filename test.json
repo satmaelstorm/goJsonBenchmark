@@ -1,0 +1,28 @@
+{
+  "response": {
+    "rows": [
+      {
+        "id": 41,
+        "name": "testOne",
+        "slug": "test1",
+        "add_info": {
+          "id": 135,
+          "name": "test",
+          "slug": "test"
+        },
+        "record_count": 10
+      },
+      {
+        "id": 139,
+        "name": "testTwo",
+        "slug": "test2",
+        "add_info": {
+          "id": 312,
+          "name": "test",
+          "slug": "test"
+        },
+        "record_count": 0
+      }
+    ]
+  }
+}
