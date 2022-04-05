@@ -4,6 +4,7 @@ import (
 	"encoding/json"
 	jsoniter "github.com/json-iterator/go"
 	"github.com/mailru/easyjson"
+	"github.com/pquerna/ffjson/ffjson"
 	"github.com/tidwall/gjson"
 	"testing"
 )
@@ -11,7 +12,7 @@ import (
 func BenchmarkStdJsonEncode(b *testing.B) {
 	var res []byte
 	b.ResetTimer()
-	for i :=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		res, _ = json.Marshal(sampleResponse)
 	}
 	_ = res
@@ -20,8 +21,17 @@ func BenchmarkStdJsonEncode(b *testing.B) {
 func BenchmarkEasyJsonEncode(b *testing.B) {
 	var res []byte
 	b.ResetTimer()
-	for i :=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		res, _ = easyjson.Marshal(sampleResponse)
+	}
+	_ = res
+}
+
+func BenchmarkFFJsonEncode(b *testing.B) {
+	var res []byte
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		res, _ = ffjson.MarshalFast(&ffSampleResponse)
 	}
 	_ = res
 }
@@ -29,7 +39,7 @@ func BenchmarkEasyJsonEncode(b *testing.B) {
 func BenchmarkJsoniterJsonEncode(b *testing.B) {
 	var res []byte
 	b.ResetTimer()
-	for i :=0; i < b.N; i++ {
+	for i := 0; i < b.N; i++ {
 		res, _ = jsoniter.Marshal(sampleResponse)
 	}
 	_ = res
@@ -52,6 +62,17 @@ func BenchmarkEasyJsonDecode(b *testing.B) {
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		_ = easyjson.Unmarshal(sampleJson, &result)
+		needId = result.Response.Rows[0].AddInfo.Id
+	}
+	_ = needId
+}
+
+func BenchmarkFFJsonDecode(b *testing.B) {
+	var result FFApiAnswer
+	var needId int
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = ffjson.UnmarshalFast(sampleJson, &result)
 		needId = result.Response.Rows[0].AddInfo.Id
 	}
 	_ = needId
@@ -141,8 +162,6 @@ func BenchmarkGJsonDeleteByMap(b *testing.B) {
 		deleteUnnecessaryFieldsGJsonMap(map[int][]byte{44866196: sampleObject}, skipFields)
 	}
 }
-
-
 
 const needId = 135
 

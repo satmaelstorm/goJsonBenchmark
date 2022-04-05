@@ -41,12 +41,11 @@ var sampleObject []byte
 
 var sampleResponse ApiAnswer
 
-var skipFields = []string{"id","short_description","inner_object_two","int_field2","pi"}
-var fields = []string{"title","inner_object","description","time_field","bool_field","int_field","e"}
+var skipFields = []string{"id", "short_description", "inner_object_two", "int_field2", "pi"}
+var fields = []string{"title", "inner_object", "description", "time_field", "bool_field", "int_field", "e"}
 
 var fastJsonParserPool fastjson.ParserPool
 
 func init() {
 	_ = json.Unmarshal(sampleJson, &sampleResponse)
 }
-

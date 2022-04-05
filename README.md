@@ -23,22 +23,24 @@ Test Delete unnecessary field from json document without parsing it into structu
 ```
 goos: linux
 goarch: amd64
-pkg: github.com/satmaelstorm/jsonBenchmark
-cpu: Intel(R) Core(TM) i7-8750H CPU @ 2.20GHz
-BenchmarkStdJsonEncode-12                 455626              2907 ns/op            1112 B/op          6 allocs/op
-BenchmarkEasyJsonEncode-12               1000000              1325 ns/op             968 B/op          6 allocs/op
-BenchmarkJsoniterJsonEncode-12           1000000              1960 ns/op            1112 B/op          6 allocs/op
-BenchmarkStdJsonDecode-12                 228279              5276 ns/op             336 B/op         13 allocs/op
-BenchmarkEasyJsonDecode-12                663830              1794 ns/op              42 B/op          8 allocs/op
-BenchmarkJsoniterDecode-12                366958              3283 ns/op             664 B/op         29 allocs/op
-BenchmarkFastJsonDecode-12               1634101               730.6 ns/op             0 B/op          0 allocs/op
-BenchmarkGJsonDecode-12                  3851779               318.0 ns/op             3 B/op          1 allocs/op
-BenchmarkFastJsonDecodeParallel-12       7178468               170.7 ns/op             0 B/op          0 allocs/op
-BenchmarkGJsonDecodeParallel-12         17168725                69.63 ns/op            3 B/op          1 allocs/op
-BenchmarkFastJsonDelete-12                426006              5862 ns/op            3916 B/op          9 allocs/op
-BenchmarkSJsonDelete-12                    52360             43182 ns/op           38096 B/op         20 allocs/op
-BenchmarkSJsonDeleteBySet-12               12549             97480 ns/op           37584 B/op         40 allocs/op
-BenchmarkGJsonDeleteByMap-12               47029             35157 ns/op           19958 B/op         46 allocs/op
+pkg: github.com/satmaelstorm/goJsonBenchmark
+cpu: Intel(R) Core(TM) i7-8565U CPU @ 1.80GHz
+BenchmarkStdJsonEncode-8                  420640              2524 ns/op            1112 B/op          6 allocs/op
+BenchmarkEasyJsonEncode-8                1000000              1003 ns/op             968 B/op          6 allocs/op
+BenchmarkFFJsonEncode-8                   732212              1596 ns/op             528 B/op         16 allocs/op
+BenchmarkJsoniterJsonEncode-8            1314940               981.2 ns/op          1112 B/op          6 allocs/op
+BenchmarkStdJsonDecode-8                  180108              6610 ns/op             304 B/op         13 allocs/op
+BenchmarkEasyJsonDecode-8                 633112              2105 ns/op              42 B/op          8 allocs/op
+BenchmarkFFJsonDecode-8                   323800              3143 ns/op             642 B/op         15 allocs/op
+BenchmarkJsoniterDecode-8                 292714              4150 ns/op             664 B/op         29 allocs/op
+BenchmarkFastJsonDecode-8                1234142               951.5 ns/op             0 B/op          0 allocs/op
+BenchmarkGJsonDecode-8                   2475152               465.9 ns/op             3 B/op          1 allocs/op
+BenchmarkFastJsonDecodeParallel-8        3799425               338.0 ns/op             0 B/op          0 allocs/op
+BenchmarkGJsonDecodeParallel-8           7916830               154.1 ns/op             3 B/op          1 allocs/op
+BenchmarkFastJsonDelete-8                 275527              3672 ns/op            3914 B/op          9 allocs/op
+BenchmarkSJsonDelete-8                     38605             29378 ns/op           38096 B/op         20 allocs/op
+BenchmarkSJsonDeleteBySet-8                15432             78291 ns/op           37584 B/op         40 allocs/op
+BenchmarkGJsonDeleteByMap-8                41868             34799 ns/op           20013 B/op         48 allocs/op
 ```
 
 *IMHO*:
